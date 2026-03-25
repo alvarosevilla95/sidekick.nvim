@@ -205,7 +205,7 @@ function M._handler(err, res, ctx)
     return
   end
 
-  if M._requests[ctx.client_id] ~= ctx.request_id then
+  if ctx.request_id ~= nil and M._requests[ctx.client_id] ~= ctx.request_id then
     return -- stale response from a cancelled request
   end
   M._requests[ctx.client_id] = nil
